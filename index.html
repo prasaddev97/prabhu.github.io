@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Dr. Prabhu Prasad Dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito Sans', -apple-system, sans-serif;
+  font-weight: 400;
+  color: #333;
+  background: #fff;
+  line-height: 1.65;
+}
+a { color: #B509AC; text-decoration: none; }
+a:hover { text-decoration: underline; }
+hr { border: none; border-top: 1px solid #e5e5e5; margin: 1.5rem 0; }
+p { margin-bottom: 0.9rem; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ─── NAVBAR ─── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  height: 56px;
+}
+.navbar-brand {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin-right: 2rem;
+  white-space: nowrap;
+}
+.navbar-brand:hover { text-decoration: none; color: #333; }
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  overflow-x: auto;
+}
+.navbar-links li a {
+  display: block;
+  padding: 0 1rem;
+  height: 56px;
+  line-height: 56px;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #555;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.navbar-links li a:hover,
+.navbar-links li a.active {
+  color: #B509AC;
+  border-bottom-color: #B509AC;
+  text-decoration: none;
+}
+
+/* ─── PAGE WRAPPER ─── */
+.page-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  position: sticky;
+  top: 72px;
+}
+.photo-placeholder {
+  width: 100%;
+  max-width: 210px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c8d6e8 0%, #9ab3cc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.45);
+  font-family: Georgia, serif;
+  letter-spacing: -2px;
+  flex-direction: column;
+}
+.photo-placeholder span {
+  font-size: 0.62rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.05em;
+  margin-top: 0.3rem;
+}
+.sidebar-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  text-align: center;
+  margin-bottom: 0.15rem;
+}
+.sidebar-role {
+  font-size: 0.82rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 0.05rem;
+}
+.sidebar-affil {
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.sidebar-address {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.74rem;
+  color: #555;
+  padding: 0.22rem 0.55rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  transition: all 0.15s;
+}
+.social-link:hover {
+  color: #B509AC;
+  border-color: #B509AC;
+  text-decoration: none;
+}
+
+/* ─── MAIN CONTENT ─── */
+.main-content h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.2rem;
+}
+.main-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.08rem;
+}
+.main-subtitle strong { color: #444; }
+.bio {
+  font-size: 0.93rem;
+  color: #444;
+  margin-top: 1.2rem;
+}
+.bio p { margin-bottom: 0.8rem; }
+.bio a { color: #B509AC; }
+.quote {
+  margin: 1rem 0;
+  padding: 0.8rem 1.2rem;
+  border-left: 3px solid #e0e0e0;
+  font-size: 0.86rem;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* ─── METRICS ─── */
+.metrics-row {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  flex-wrap: wrap;
+}
+.metric {
+  text-align: center;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  min-width: 80px;
+}
+.metric-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #B509AC;
+  line-height: 1;
+}
+.metric-label {
+  font-size: 0.68rem;
+  color: #999;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ─── SECTION HEADINGS ─── */
+.section-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #222;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+.section-heading a { color: #222; font-weight: 700; }
+.section-heading a:hover { color: #B509AC; text-decoration: none; }
+
+/* ─── NEWS TABLE ─── */
+.news-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+.news-table td {
+  padding: 0.5rem 0.4rem;
+  vertical-align: top;
+  border-bottom: 1px solid #f2f2f2;
+  color: #444;
+}
+.news-table td:first-child {
+  white-space: nowrap;
+  color: #aaa;
+  font-size: 0.78rem;
+  padding-right: 1.2rem;
+  min-width: 80px;
+}
+.news-table a { color: #B509AC; }
+
+/* ─── PUBLICATIONS ─── */
+.pub-list { list-style: none; counter-reset: pub-counter; }
+.pub-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: start;
+  counter-increment: pub-counter;
+}
+.pub-thumb {
+  width: 140px;
+  height: 90px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.pub-thumb-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  text-align: center;
+}
+.pub-thumb-icon { font-size: 1.8rem; margin-bottom: 0.25rem; }
+.pub-thumb-label { font-size: 0.56rem; color: #bbb; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.4; }
+.pub-title { font-size: 0.94rem; font-weight: 700; color: #222; margin-bottom: 0.3rem; line-height: 1.4; }
+.pub-authors { font-size: 0.81rem; color: #777; margin-bottom: 0.2rem; }
+.pub-authors .me { font-weight: 700; color: #444; }
+.pub-venue { font-size: 0.81rem; font-style: italic; color: #999; margin-bottom: 0.5rem; }
+.pub-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 3px;
+}
+.badge-venue { background: #f4eaff; color: #7300c8; }
+.badge-q1 { background: #e8f0ff; color: #0050bb; }
+.badge-if { background: #fff4e8; color: #b85000; }
+.pub-links { display: flex; gap: 0.45rem; flex-wrap: wrap; align-items: center; }
+.pub-link-btn {
+  font-size: 0.74rem;
+  color: #666;
+  border: 1px solid #ccc;
+  padding: 0.08rem 0.5rem;
+  border-radius: 3px;
+  transition: all 0.15s;
+}
+.pub-link-btn:hover { color: #B509AC; border-color: #B509AC; text-decoration: none; }
+.abs-toggle {
+  font-size: 0.74rem; color: #888; border: 1px solid #ccc;
+  padding: 0.08rem 0.5rem; border-radius: 3px; cursor: pointer;
+  background: none; font-family: inherit; transition: all 0.15s;
+}
+.abs-toggle:hover { color: #B509AC; border-color: #B509AC; }
+.pub-abstract {
+  font-size: 0.8rem; color: #777; line-height: 1.65;
+  margin-top: 0.7rem; display: none;
+  background: #fafafa; padding: 0.8rem 1rem; border-radius: 4px;
+}
+.pub-abstract.open { display: block; }
+
+/* ─── EDUCATION ─── */
+.edu-list { list-style: none; }
+.edu-item { padding: 0.85rem 0; border-bottom: 1px solid #f0f0f0; font-size: 0.87rem; }
+.edu-degree { font-weight: 700; color: #222; font-size: 0.93rem; }
+.edu-institute { color: #555; margin-top: 0.1rem; }
+.edu-meta { color: #aaa; font-size: 0.78rem; margin-top: 0.15rem; }
+.edu-thesis { font-size: 0.81rem; color: #666; font-style: italic; margin-top: 0.25rem; }
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.76rem;
+  color: #bbb;
+  border-top: 1px solid #e8e8e8;
+  margin-top: 3rem;
+}
+footer a { color: #bbb; }
+footer a:hover { color: #B509AC; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 720px) {
+  .page-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .sidebar { position: static; }
+  .pub-item { grid-template-columns: 1fr; }
+  .pub-thumb { width: 100%; height: 100px; }
+  .navbar { padding: 0 1rem; }
+  .metrics-row { gap: 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="navbar-brand" href="#">Dr. Prabhu Prasad Dev</a>
+  <ul class="navbar-links">
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap" id="about">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <!--
+      Replace this placeholder with your photo:
+      <img src="your-photo.jpg" style="width:100%;max-width:210px;border-radius:50%;display:block;margin:0 auto 1rem;" alt="Prabhu Prasad Dev">
+    -->
+    <div class="photo-placeholder">
+      PPD
+      <span>Replace with photo</span>
+    </div>
+
+    <div class="sidebar-name">Dr. Prabhu Prasad Dev</div>
+    <div class="sidebar-role"><strong>Assistant Professor</strong></div>
+    <div class="sidebar-affil">KIIT Deemed to be University</div>
+
+    <div class="sidebar-address">
+      School of Computer Engineering<br>
+      KIIT Bhubaneswar<br>
+      Odisha, India 751024
+    </div>
+
+    <div class="social-links">
+      <a class="social-link" href="mailto:prabhudev2k26@gmail.com">✉ Email</a>
+      <a class="social-link" href="https://scholar.google.com/citations?user=XVAWNbEAAAAJ" target="_blank">🎓 Scholar</a>
+      <a class="social-link" href="https://github.com/prasaddev97" target="_blank">💻 GitHub</a>
+      <a class="social-link" href="https://orcid.org/0000-0002-7101-1300" target="_blank">🔬 ORCID</a>
+      <a class="social-link" href="https://dblp.org/pid/353/1413.html" target="_blank">📚 DBLP</a>
+      <a class="social-link" href="tel:+917008682286">📞 +91 7008682286</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <h1>Dr. Prabhu Prasad Dev</h1>
+    <div class="main-subtitle"><strong>Assistant Professor</strong>, School of Computer Engineering, KIIT Bhubaneswar</div>
+    <div class="main-subtitle"><strong>Post-Ph.D.</strong>, National Institute of Technology (NIT) Calicut</div>
+
+    <div class="bio">
+      <p>
+        I am an Assistant Professor at the School of Computer Engineering, <a href="https://kiit.ac.in" target="_blank">KIIT Deemed to be University</a>, Bhubaneswar, Odisha, India (QS Asia 2026: Rank 294 | NIRF 2025: Rank 27). My research focuses on <strong>Video Anomaly Detection</strong>, <strong>Person Re-Identification</strong>, and <strong>Biomedical Image Classification</strong> using computer vision and deep learning.
+      </p>
+      <p>
+        I completed my <strong>Ph.D. in Computer Science and Engineering</strong> from the National Institute of Technology (NIT) Calicut, Kerala, India in November 2025, supervised by <a href="#">Dr. Pranesh Das</a> and Dr. Raju Hazari. My thesis addressed <em>Anomaly Detection in Surveillance Videos using Weakly Supervised Deep Learning Techniques</em>.
+      </p>
+      <p>
+        My research has been published in top-tier venues including <strong>IEEE Transactions on Circuits Systems and Video Technology</strong> (IF: 11.1), <strong>Neurocomputing</strong> (IF: 6.5), <strong>Biomedical Signal Processing and Control</strong> (IF: 4.9), and the International Conference on Pattern Recognition (<strong>ICPR 2025, CORE B</strong>). I serve as a peer reviewer for <em>Applied Soft Computing</em>, <em>Neurocomputing</em>, and <em>Pattern Recognition</em>. I am an <strong>IEEE Member</strong> (#100903729), and have qualified <strong>UGC NET 2021</strong> and <strong>GATE 2019</strong>.
+      </p>
+    </div>
+
+    <div class="quote">
+      <strong>Research Interests:</strong> Video Anomaly Detection &nbsp;·&nbsp; Person Re-Identification &nbsp;·&nbsp; Biomedical Image Classification &nbsp;·&nbsp; Computer Vision &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; Deep Learning &nbsp;·&nbsp; Vision-Language Models &nbsp;·&nbsp; Weakly Supervised Learning
+    </div>
+
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-num">80+</div><div class="metric-label">Citations</div></div>
+      <div class="metric"><div class="metric-num">5</div><div class="metric-label">h-Index</div></div>
+      <div class="metric"><div class="metric-num">3</div><div class="metric-label">i10-Index</div></div>
+      <div class="metric"><div class="metric-num">6</div><div class="metric-label">Q1 Journals</div></div>
+      <div class="metric"><div class="metric-num">24+</div><div class="metric-label">Conferences</div></div>
+    </div>
+
+    <hr>
+
+    <!-- NEWS -->
+    <h2 class="section-heading" id="news"><a href="#news">News</a></h2>
+    <table class="news-table">
+      <tbody>
+        <tr>
+          <td>May 2026</td>
+          <td>Paper accepted: <a href="https://doi.org/10.1109/ESIC68176.2026.11495822" target="_blank">"Testing Privacy-Preserving AI-Generated Text Detection Using Large Language Models"</a> at IEEE ESIC 2026, KIIT University.</td>
+        </tr>
+        <tr>
+          <td>2026</td>
+          <td>Two papers accepted in <strong>Springer IJMLC</strong> (Q1, IF: 2.7) on AI-generated text detection using <a href="https://doi.org/10.1007/s13042-025-02880-x" target="_blank">XLNet-CNN</a> and <a href="https://doi.org/10.1007/s13042-025-02868-7" target="_blank">RoBERTa-CNN</a> hybrid models.</td>
+        </tr>
+        <tr>
+          <td>2026</td>
+          <td>Journal paper accepted: <a href="https://doi.org/10.1016/j.neucom.2025.132591" target="_blank">"Cross-Modal Uncertainty Modeling Framework for Unseen Anomaly Detection"</a> in <strong>Neurocomputing</strong>, Elsevier (Q1, IF: 6.5).</td>
+        </tr>
+        <tr>
+          <td>Dec 2025</td>
+          <td>Successfully defended Ph.D. thesis at <strong>NIT Calicut</strong> on <em>Anomaly Detection in Surveillance Videos using Weakly Supervised Deep Learning Techniques</em>. 🎉</td>
+        </tr>
+        <tr>
+          <td>Dec 2025</td>
+          <td>Joined <strong>KIIT Deemed to be University</strong> as Assistant Professor, School of Computer Engineering.</td>
+        </tr>
+        <tr>
+          <td>Dec 2024</td>
+          <td>Paper accepted at <strong>ICPR 2025 (CORE B)</strong>: <a href="https://doi.org/10.1007/978-3-031-78125-4_25" target="_blank">"MCANet: Multimodal Caption Aware Training-Free Video Anomaly Detection via Large Language Model"</a>, Kolkata, India.</td>
+        </tr>
+        <tr>
+          <td>Oct 2024</td>
+          <td>Journal paper accepted: <a href="https://doi.org/10.1109/TCSVT.2024.3482007" target="_blank">"ReFLIP-VAD: Towards Weakly Supervised Video Anomaly Detection via Vision-Language Model"</a> in <strong>IEEE T-CSVT</strong> (Q1, IF: 11.1).</td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>Papers accepted in <strong>BSPC</strong> (IF: 4.9) on Parkinson's Disease detection, and <strong>JVCIR</strong> (IF: 4.1) on Caption Aware Video Anomaly Detection (CA-VAD).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <!-- PUBLICATIONS -->
+    <h2 class="section-heading" id="publications"><a href="#publications">Selected Publications</a></h2>
+
+    <ol class="pub-list">
+
+      <li class="pub-item">
+        <div class="pub-thumb">
+          <div class="pub-thumb-inner" style="background:linear-gradient(135deg,#edf3ff,#d0e0ff);">
+            <div class="pub-thumb-icon">🎥</div>
+            <div class="pub-thumb-label">Vision-Language · VAD</div>
+          </div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-title">ReFLIP-VAD: Towards Weakly Supervised Video Anomaly Detection via Vision-Language Model</div>
+          <div class="pub-authors"><span class="me">Prabhu Prasad Dev</span>, Raju Hazari, and Pranesh Das</div>
+          <div class="pub-venue">IEEE Transactions on Circuits Systems and Video Technology, 2024</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">IEEE T-CSVT · Q1 SCIE</span>
+            <span class="badge badge-if">IF: 11.1</span>
+          </div>
+          <div class="pub-links">
+            <button class="abs-toggle" onclick="toggleAbs(this)">Abs</button>
+            <a class="pub-link-btn" href="https://doi.org/10.1109/TCSVT.2024.3482007" target="_blank">DOI</a>
+          </div>
+          <div class="pub-abstract">
+            ReFLIP-VAD is a weakly supervised video anomaly detection framework that leverages vision-language model alignment to improve anomaly localization without requiring frame-level annotations, achieving state-of-the-art performance on benchmark surveillance datasets.
+          </div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-thumb">
+          <div class="pub-thumb-inner" style="background:linear-gradient(135deg,#fff0f9,#ffd6f5);">
+            <div class="pub-thumb-icon">🧠</div>
+            <div class="pub-thumb-label">Cross-Modal · Anomaly</div>
+          </div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-title">Cross-Modal Uncertainty Modeling Framework for Unseen Anomaly Detection</div>
+          <div class="pub-authors"><span class="me">Prabhu Prasad Dev</span>, Pranesh Das, and Raju Hazari</div>
+          <div class="pub-venue">Neurocomputing, Elsevier, 2026</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">Neurocomputing · Q1 SCIE</span>
+            <span class="badge badge-if">IF: 6.5</span>
+          </div>
+          <div class="pub-links">
+            <button class="abs-toggle" onclick="toggleAbs(this)">Abs</button>
+            <a class="pub-link-btn" href="https://doi.org/10.1016/j.neucom.2025.132591" target="_blank">DOI</a>
+          </div>
+          <div class="pub-abstract">
+            A cross-modal uncertainty modeling framework that enables detection of anomalies not seen during training. By jointly reasoning over visual and semantic uncertainty signals, the framework generalizes to open-world anomaly scenarios in surveillance videos.
+          </div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-thumb">
+          <div class="pub-thumb-inner" style="background:linear-gradient(135deg,#f0fff4,#c8f0d8);">
+            <div class="pub-thumb-icon">📹</div>
+            <div class="pub-thumb-label">LLM · Multimodal · VAD</div>
+          </div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-title">MCANet: Multimodal Caption Aware Training-Free Video Anomaly Detection via Large Language Model</div>
+          <div class="pub-authors"><span class="me">Prabhu Prasad Dev</span>, Raju Hazari, and Pranesh Das</div>
+          <div class="pub-venue"><em>In International Conference on Pattern Recognition (ICPR)</em>, pp. 362–379, 2025</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">ICPR 2025 · CORE B</span>
+          </div>
+          <div class="pub-links">
+            <button class="abs-toggle" onclick="toggleAbs(this)">Abs</button>
+            <a class="pub-link-btn" href="https://doi.org/10.1007/978-3-031-78125-4_25" target="_blank">DOI</a>
+          </div>
+          <div class="pub-abstract">
+            MCANet introduces a training-free video anomaly detection pipeline by leveraging large language models to generate multimodal captions. Textual descriptions of video content are used as auxiliary signals to guide anomaly scoring without any task-specific fine-tuning.
+          </div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-thumb">
+          <div class="pub-thumb-inner" style="background:linear-gradient(135deg,#fff8e8,#ffe5b4);">
+            <div class="pub-thumb-icon">🏥</div>
+            <div class="pub-thumb-label">Biomedical · Parkinson's</div>
+          </div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-title">A modified Gray Wolf Optimization algorithm for early detection of Parkinson's Disease</div>
+          <div class="pub-authors">Krishnapriya Santhosh, <span class="me">Prabhu Prasad Dev</span>, Binu Jose A, Zorana Lynton, Pranesh Das, and Ebrahim Ghaderpour</div>
+          <div class="pub-venue">Biomedical Signal Processing and Control, Elsevier, 2025</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">BSPC · Q1 SCIE</span>
+            <span class="badge badge-if">IF: 4.9</span>
+          </div>
+          <div class="pub-links">
+            <button class="abs-toggle" onclick="toggleAbs(this)">Abs</button>
+            <a class="pub-link-btn" href="https://doi.org/10.1016/j.bspc.2025.108061" target="_blank">DOI</a>
+          </div>
+          <div class="pub-abstract">
+            A modified Gray Wolf Optimization (GWO) algorithm applied to feature selection for early-stage Parkinson's Disease detection from biomedical signals, achieving improved classification accuracy over standard optimization baselines.
+          </div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-thumb">
+          <div class="pub-thumb-inner" style="background:linear-gradient(135deg,#f5f0ff,#ddd0ff);">
+            <div class="pub-thumb-icon">📝</div>
+            <div class="pub-thumb-label">AI Text Detection · NLP</div>
+          </div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-title">Detecting AI-generated essays using fine-tuned XLNet-CNN hybrid techniques: a study of the academic integrity challenge</div>
+          <div class="pub-authors">Manish Prajapati, Santos Kumar Baliarsingh, and <span class="me">Prabhu Prasad Dev</span></div>
+          <div class="pub-venue">International Journal of Machine Learning and Cybernetics, Springer, 2026</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">IJMLC · Springer · Q1 SCIE</span>
+            <span class="badge badge-if">IF: 2.7</span>
+          </div>
+          <div class="pub-links">
+            <button class="abs-toggle" onclick="toggleAbs(this)">Abs</button>
+            <a class="pub-link-btn" href="https://doi.org/10.1007/s13042-025-02880-x" target="_blank">DOI</a>
+          </div>
+          <div class="pub-abstract">
+            An XLNet-CNN hybrid model fine-tuned for detecting AI-generated academic essays, addressing growing challenges in maintaining academic integrity in an era of large language model proliferation.
+          </div>
+        </div>
+      </li>
+
+      <li class="pub-item">
+        <div class="pub-thumb">
+          <div class="pub-thumb-inner" style="background:linear-gradient(135deg,#f0f8ff,#c8dff5);">
+            <div class="pub-thumb-icon">🔍</div>
+            <div class="pub-thumb-label">Multi-Stream · Deep Learning</div>
+          </div>
+        </div>
+        <div class="pub-body">
+          <div class="pub-title">Msdeepnet: A Novel Multi-Stream Deep Neural Network for Real-World Anomaly Detection in Surveillance Videos</div>
+          <div class="pub-authors"><span class="me">Prabhu Prasad Dev</span>, Pranesh Das, and Raju Hazari</div>
+          <div class="pub-venue"><em>In International Conference on Deep Learning Theory and Applications</em>, Springer, pp. 157–172, 2023</div>
+          <div class="pub-badges">
+            <span class="badge badge-venue">DeLTA 2023 · Rome, Italy</span>
+          </div>
+          <div class="pub-links">
+            <button class="abs-toggle" onclick="toggleAbs(this)">Abs</button>
+            <a class="pub-link-btn" href="https://doi.org/10.1007/978-3-031-39059-3_11" target="_blank">DOI</a>
+          </div>
+          <div class="pub-abstract">
+            Msdeepnet proposes a multi-stream deep neural architecture that processes complementary video features in parallel streams for robust real-world anomaly detection under varied surveillance conditions.
+          </div>
+        </div>
+      </li>
+
+    </ol>
+
+    <hr>
+
+    <!-- EDUCATION -->
+    <h2 class="section-heading" id="education"><a href="#education">Education</a></h2>
+    <ul class="edu-list">
+      <li class="edu-item">
+        <div class="edu-degree">Ph.D. in Computer Science and Engineering</div>
+        <div class="edu-institute">National Institute of Technology (NIT) Calicut, Kerala, India</div>
+        <div class="edu-meta">2021 – 2025 &nbsp;·&nbsp; CGPA: 8.4/10 &nbsp;·&nbsp; Defended: 4 November 2025</div>
+        <div class="edu-thesis">Thesis: Anomaly Detection in Surveillance Videos using Weakly Supervised Deep Learning Techniques<br>
+        <span style="font-style:normal;color:#aaa;font-size:0.78rem;">Supervisors: Dr. Pranesh Das &amp; Dr. Raju Hazari</span></div>
+      </li>
+      <li class="edu-item">
+        <div class="edu-degree">M.Tech. in Computer Science and Engineering</div>
+        <div class="edu-institute">KIIT Deemed to be University, Bhubaneswar, Odisha, India</div>
+        <div class="edu-meta">2019 – 2021 &nbsp;·&nbsp; CGPA: 9.69/10</div>
+        <div class="edu-thesis">Thesis: Classification of Hyperspectral Image using Deep Convolutional Neural Network</div>
+      </li>
+      <li class="edu-item">
+        <div class="edu-degree">B.Tech. in Computer Science and Engineering</div>
+        <div class="edu-institute">KIIT Deemed to be University, Bhubaneswar, Odisha, India</div>
+        <div class="edu-meta">2016 – 2019 &nbsp;·&nbsp; CGPA: 8.89/10</div>
+      </li>
+      <li class="edu-item">
+        <div class="edu-degree">Diploma in Computer Science and Engineering</div>
+        <div class="edu-institute">Kalinga Polytechnic, Bhubaneswar, Odisha, India</div>
+        <div class="edu-meta">2013 – 2016 &nbsp;·&nbsp; 89.89% &nbsp;·&nbsp; SCTE&amp;VT, Odisha</div>
+      </li>
+    </ul>
+
+    <hr>
+
+    <!-- CONTACT -->
+    <h2 class="section-heading" id="contact"><a href="#contact">Contact</a></h2>
+    <p style="font-size:0.9rem;color:#555;">
+      Reach out to me via email at <a href="mailto:prabhudev2k26@gmail.com">prabhudev2k26@gmail.com</a>.<br>
+      Scopus ID: 57219490755 &nbsp;·&nbsp; ORCID: <a href="https://orcid.org/0000-0002-7101-1300" target="_blank">0000-0002-7101-1300</a> &nbsp;·&nbsp; ResearcherID: PFR-5185-2026
+    </p>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; Copyright 2026 Dr. Prabhu Prasad Dev. &nbsp;
+  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with
+  <a href="https://github.com/alshedivat/al-folio" target="_blank">al-folio</a> theme.
+  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+</footer>
+
+<script>
+  function toggleAbs(btn) {
+    const abs = btn.closest('.pub-body').querySelector('.pub-abstract');
+    const open = abs.classList.toggle('open');
+    btn.textContent = open ? 'Hide' : 'Abs';
+  }
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.navbar-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
